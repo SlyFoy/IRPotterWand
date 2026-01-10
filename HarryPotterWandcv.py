@@ -276,31 +276,6 @@ while True:
 
 
 
-        if len(points_array):
-            last_found_at = datetime.now()
-            if flag != 1:
-                print("Start tracing")
-                flag = 1
-
-        if len(points_array) > 0:
-            if flag == 1:
-                # Get coordinates of the center of blob from keypoints and append them in points list
-                points.append(tuple(map(int, points_array[0])))
-
-                # Draw the path by drawing lines between 2 consecutive points in points list
-                for i in range(1, len(points)):
-                    cv2.line(frame_with_keypoints, points[i - 1], points[i], (255, 255, 0), 10)
-
-        if flag == 1 and len(points_array) == 0 and (
-                datetime.now() - last_found_at).total_seconds() > 1:
-            # if int(points_array[0][0]) in range(185, 195) and int(points_array[0][1]) in range(135, 145):
-            print("Tracing Done!!")
-
-            if len(points) > 0:
-                # Draw the path by drawing lines between 2 consecutive points in points list
-                for i in range(1, len(points)):
-                    cv2.line(frame_with_keypoints, points[i - 1], points[i], (255, 255, 0), 10)
-
             try:
                 masked = cv2.inRange(frame_with_keypoints, lower_blue, upper_blue)
                 contours, _ = cv2.findContours(masked, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)

@@ -271,29 +271,10 @@ while True:
 
         fgmask = fgbg.apply(image)
 
-        
-        frame = cv2.resize(frame, (frame.shape[1] // 3, frame.shape[0] // 3))
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+      
         # cv2.imshow("original", frame)
 
-        # Subtract Background
-        fgmask = fgbg.apply(frame, learningRate=0.001)
-        f_no_background = cv2.bitwise_and(frame, frame, mask=fgmask)
-        # cv2.imshow("RemovedBAckground", f_no_background)
 
-        # detecting keypoints
-        keypoints = detector.detect(frame)
-
-        frame_with_keypoints = cv2.drawKeypoints(frame, keypoints, np.array([]), (0, 0, 255),
-                                                 cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-
-        # starting and ending circle
-        # frame_with_keypoints = cv2.circle(frame_with_keypoints, (140, 70), 6, (0, 255, 0), 2)
-        # frame_with_keypoints = cv2.circle(frame_with_keypoints, (190, 140), 6, (0, 0, 255), 2)
-        #
-        #
-        points_array = cv2.KeyPoint_convert(keypoints)
 
         if len(points_array):
             last_found_at = datetime.now()

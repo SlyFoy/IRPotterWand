@@ -271,7 +271,7 @@ while True:
 
         fgmask = fgbg.apply(image)
 
-        frame = image.copy()
+        
         frame = cv2.resize(frame, (frame.shape[1] // 3, frame.shape[0] // 3))
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 

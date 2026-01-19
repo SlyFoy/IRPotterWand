@@ -275,7 +275,6 @@ while True:
         # cv2.imshow("original", frame)
 
 
-
             try:
                 masked = cv2.inRange(frame_with_keypoints, lower_blue, upper_blue)
                 contours, _ = cv2.findContours(masked, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)

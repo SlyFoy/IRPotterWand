@@ -15,7 +15,7 @@ IsTraining = True
 nameLookup = {}
 LastSpell = "None"
 
-
+camera.resolution = (640, 480)
 
 def InitClassificationAlgo():
     """
